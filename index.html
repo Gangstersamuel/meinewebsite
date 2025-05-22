@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webseite mit Video, Musik und Lautstärkeregler</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    ####Hintergrund video####
+
+    <video id="background-video" autoplay loop muted>
+        <source src="video/background.mp4" type="video/mp4">
+        Dein Browser unterstützt das Abspielen von Video-Dateien nicht.
+    </video>
+
+    <!-- Musik im Hintergrund (aber nicht automatisch abgespielt) -->
+    <audio id="background-music">
+        <source src="audio/audio.mp3" type="audio/mp3">
+        Dein Browser unterstützt das Abspielen von Audio-Dateien nicht.
+    </audio>
+
+    <!-- YouTube Button oben in der Mitte -->
+    <div class="youtube-button-container">
+        <button class="button youtube-button" onclick="window.location.href='https://www.youtube.com/@pxko1337'">Zum YouTube Video</button>
+    </div>
+
+    <!-- Inhalt über dem Video -->
+    <div class="content">
+        <h1>Willkommen auf meiner Webseite</h1>
+        <p>Dies ist eine Webseite mit einem Video-Hintergrund und Musik, die beim Klick gestartet wird.</p>
+
+        <!-- Button zum Starten der Musik -->
+        <button class="button" onclick="playMusic()">Musik starten</button>
+        <!-- Button zum Stoppen der Musik -->
+        <button class="button" onclick="stopMusic()">Musik stoppen</button>
+
+        <div class="info">
+            <h2>Über diese Webseite</h2>
+            <p>Das Video läuft im Hintergrund und die Musik wird beim Klick gestartet und gestoppt.</p>
+            <p>Du kannst das Design und das Video anpassen, wie du möchtest!</p>
+        </div>
+    </div>
+
+    <!-- Neuer Text, der links angezeigt wird -->
+    <div class="left-text">
+        <p>SOON</p>
+        <p>SOON</p>
+    </div>
+
+    <!-- Lautstärkeregler -->
+    <div class="volume-control">
+        <label for="volume-slider">Lautstärke:</label>
+        <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1" onchange="adjustVolume()">
+    </div>
+
+    <script>
+        // Funktion zum Abspielen der Musik
+        function playMusic() {
+            var audio = document.getElementById("background-music");
+            audio.play();
+            audio.loop = true; // Musik soll sich wiederholen
+        }
+
+        // Funktion zum Stoppen der Musik
+        function stopMusic() {
+            var audio = document.getElementById("background-music");
+            audio.pause(); // Stoppt die Musik
+            audio.currentTime = 0; // Setzt die Musik zurück zum Anfang
+        }
+
+        // Funktion zur Anpassung der Lautstärke
+        function adjustVolume() {
+            var audio = document.getElementById("background-music");
+            var volumeSlider = document.getElementById("volume-slider");
+            audio.volume = volumeSlider.value; // Lautstärke basierend auf dem Slider-Wert einstellen
+        }
+    </script>
+
+</body>
+</html>
